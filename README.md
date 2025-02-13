@@ -77,7 +77,7 @@ I vanliga fall är det ingen kanonidé att lägga upp sina API-nycklar på Githu
 
 ### Halvtidsuppföljning
 
-Nästa fredag den 21/2 skall vi testa ett nytt grepp, nämligen halvtidsuppföljning. Jag och Jacob kommer samla er i mindre grupper om 4-5 studerande, där ni får visa upp vad ni hunnit med så långt, vad ni har störst problem med, insikter ni slagits av etc. Dessa möten kommer vara ca 20-25 minuter långa, så se till att komma väl förberedda där ni redan på förhand skrivit upp era eventuella funderingar.
+Nästa fredag den 21/2 skall vi testa ett nytt grepp, nämligen halvtidsuppföljning. Jag och Jacob kommer samla er i mindre grupper om 4-5 studerande, där ni får visa upp vad ni hunnit med så långt, vad ni har störst problem med, insikter ni slagits av etc. Dessa möten kommer vara ca 20-25 minuter långa, så se till att komma väl förberedda där ni redan på förhand skrivit upp era eventuella funderingar. Detta gör vi för er skull, så vi kan säkerställa att ni får kontinuerlig feedback och inte halkar efter.
 
 Jag vill att ALLA studerande bokar in sig på en tid [via denna länk](https://docs.google.com/spreadsheets/d/1lKzWxiD7DfwGqhaZ3meSbRFo8JYeOPn7LxYHKFAbusE/edit?usp=sharing).
 
