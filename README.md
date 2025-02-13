@@ -71,13 +71,19 @@ WAVE evaluation tool är användbart för att kontrollera tillgänglighet efters
 
 I mappen finner ni även en template som ni får använda er av om ni vill. I denna har jag kodat upp basen för applikationen, dess färgtema, funktionalitet för en karusell med trailers osv. Ni får jättegärna använda er av denna, men det är även tillåtet att skapa ert eget projekt från scratch. Kom dock ihåg att er applikation MÅSTE vara visuellt acceptabel.
 
-### Inlämning
-
-Inlämning av länken till ert publika Git-repo skall ske senast kl 23:59, fredagen den 28 februari på Azomo.
-
 ### VMA
 
 I vanliga fall är det ingen kanonidé att lägga upp sina API-nycklar på Github då dessa är privata, och kan leda till att någon annan gör slut på era gratisanrop. I examinationer där vi använder API-nyckel vill jag dock att ni ändå lägger in API-nyckeln i er kod som pushas, då det inte är hållbart att jag skall behöva kopiera och klistra in 54 st API-nycklar för att få allas kod att fungera (rättningen är redan tillräckligt tråkig som den är). Är ni rädda för att pusha era nycklar så kan ni göra era repon privata istället. Glöm dock inte att bjuda in mig isåfall.
+
+### Halvtidsuppföljning
+
+Nästa fredag den 21/2 skall vi testa ett nytt grepp, nämligen halvtidsuppföljning. Jag och Jacob kommer samla er i mindre grupper om 4-5 studerande, där ni får visa upp vad ni hunnit med så långt, vad ni har störst problem med, insikter ni slagits av etc. Dessa möten kommer vara ca 20-25 minuter långa, så se till att komma väl förberedda där ni redan på förhand skrivit upp era eventuella funderingar.
+
+Jag vill att ALLA studerande bokar in sig på en tid [via denna länk](https://docs.google.com/spreadsheets/d/1lKzWxiD7DfwGqhaZ3meSbRFo8JYeOPn7LxYHKFAbusE/edit?usp=sharing).
+
+### Inlämning
+
+Inlämning av länken till ert publika Git-repo skall ske senast kl 23:59, fredagen den 28 februari på Azomo.
 
 ### Examination
 
