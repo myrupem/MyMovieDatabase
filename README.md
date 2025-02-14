@@ -2,6 +2,8 @@
 
 # Individuellt examensarbete - MyMovieDatabase
 
+[Genomgång av uppgiften](https://funet.sharepoint.com/:v:/s/FrontendutvecklareYH-Fe24Distans/EQ6d4vLJxT9IhRXIzf8A4UQBJhsEBqmy-xER4mfdb-5s_g?e=sTPdMl&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
 ## Introduktion
 
 Hej där, kodmästare! Det är dags att sätta på våra virtuella regissörskepsar och börja rulla kameran på vår egen version av en klassisk filmindustri-epos - vår alldeles egna filmdatabas! Vi har tränat, vi har kodat och nu är det dags att visa världen vad vi kan åstadkomma med våra HTML-, CSS-, och framförallt JavaScript-färdigheter. Så spänn fast era säkerhetsbälten och förbered er på en episk resa genom bland annat funktioner, objekt, eventhantering och API-anrop. Tillsammans kommer vi att skapa en filmälskares våta dröm och bevisa att när det gäller kod, så finns det - likt i filmens värld - inga gränser för vad vi kan uppnå!
