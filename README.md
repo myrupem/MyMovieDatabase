@@ -71,6 +71,10 @@ WAVE evaluation tool är användbart för att kontrollera tillgänglighet efters
 
 I mappen finner ni även en template som ni får använda er av om ni vill. I denna har jag kodat upp basen för applikationen, dess färgtema, funktionalitet för en karusell med trailers osv. Ni får jättegärna använda er av denna, men det är även tillåtet att skapa ert eget projekt från scratch. Kom dock ihåg att er applikation MÅSTE vara visuellt acceptabel.
 
+#### caroussel.js
+
+I templaten ligger också filen *caroussel.js* som sköter hela mekaniken kring filmslidern längst upp på startsidan. Denna fil bör ni inte röra alls, utan det är färdig kod som fungerar, och som ni får av mig. För att rendera ut filmer till trailern har ni till er hjälp den exporterade funktionen *renderTrailers()* som tar emot en film och ett nummer(1-5) som motsvarar det index den inskickade filmer han. Notera att denna funktion inte tar emot en lista av filmer, utan ni behöver skapa en loop som går 5 varv, och där ni i varje varv anropar funktionen och skickar med aktuell film och nummer.
+
 ### VMA
 
 I vanliga fall är det ingen kanonidé att lägga upp sina API-nycklar på Github då dessa är privata, och kan leda till att någon annan gör slut på era gratisanrop. I examinationer där vi använder API-nyckel vill jag dock att ni ändå lägger in API-nyckeln i er kod som pushas, då det inte är hållbart att jag skall behöva kopiera och klistra in 54 st API-nycklar för att få allas kod att fungera (rättningen är redan tillräckligt tråkig som den är). Är ni rädda för att pusha era nycklar så kan ni göra era repon privata istället. Glöm dock inte att bjuda in mig isåfall.
