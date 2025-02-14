@@ -41,7 +41,7 @@ I repot hittar ni mappen **template** innehållandes startkod som ni får använ
 Mitt eget film-API med våra egna rekommendationer är endast till för att ladda upp de inledande filmerna, samt trailers på startsidan innan användaren börjar interagera med sidan. Notera att APIet innehåller nycklar som överensstämmer med OMDBs API vilket gör att ni kan återanvända funktioner för att hantera datan både från mitt API och OMDBs.
 
 ```
-https://santosnr6.github.io/Data/movies.json
+https://santosnr6.github.io/Data/favoritemovies.json
 ```
 
 #### OMDB
