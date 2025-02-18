@@ -1,4 +1,7 @@
 import log from "./utils/logger.js";
+import { fetchTrailers } from "./modules/api.js";
+import { renderTrailers } from "./modules/caroussel.js";
+
 
 if(window.location.pathname === '/' || window.location.pathname === '/index.html') {
     console.log('index.html');
@@ -14,9 +17,16 @@ if(window.location.pathname === '/' || window.location.pathname === '/index.html
 
 }
 
-
 pageSetup()
 
-function pageSetup() {
+async function pageSetup() {
     log("pageSetup()")
+
+    let trailers = await fetchTrailers() //returnerar en shufflad array av fem trailers
+    //ska denna va här?
+    for(let i = 0; i < trailers.length; i++) {
+        renderTrailers(trailers[i], i + 1)
+    }
+    
+
 }
