@@ -1,6 +1,8 @@
 import log from "./utils/logger.js";
 import { fetchTrailers } from "./modules/api.js";
 import { renderTrailers } from "./modules/caroussel.js";
+import getMovieCard from "./components/movieCard.js";
+import { getEl } from "./utils/domUtils.js";
 
 
 if(window.location.pathname === '/' || window.location.pathname === '/index.html') {
@@ -28,5 +30,10 @@ async function pageSetup() {
         renderTrailers(trailers[i], i + 1)
     }
     
+    //MovieCard test
+    let sectionRef = getEl('#cardContainer')
+    for(let movie of trailers) {
+        sectionRef.appendChild(getMovieCard(movie))
+    }
 
 }

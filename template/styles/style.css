@@ -21,6 +21,7 @@
 body {
     background-color: var(--primary-bg);
     max-width: 100%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* Utils */
@@ -81,4 +82,33 @@ body {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+/* Movie Cards */
+.card-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    border: 1px solid red;
+    justify-content: space-evenly;
+}
+
+.movie-card {
+    margin: 0.5em;
+    width: 220px;
+    height: auto;
+}
+
+.movie-card_img {
+    width: 220px;
+    height: auto;
+}
+
+.movie-card_title {
+    color: var(--text-yellow);
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    border: 1px solid red;
+    padding: 0.5em;
 }
