@@ -1,3 +1,4 @@
+import log from "./utils/logger.js";
 
 if(window.location.pathname === '/' || window.location.pathname === '/index.html') {
     console.log('index.html');
@@ -11,4 +12,11 @@ if(window.location.pathname === '/' || window.location.pathname === '/index.html
 } else if(window.location.pathname === '/search.html') {
     console.log('search.html');
 
+}
+
+
+pageSetup()
+
+function pageSetup() {
+    log("pageSetup()")
 }
