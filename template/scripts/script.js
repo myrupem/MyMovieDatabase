@@ -1,9 +1,9 @@
 import log from "./utils/logger.js";
 import { shuffle } from "./utils/utils.js";
-import { fetchTopMovies } from "./modules/api.js";
+import { getEl, getElems } from "./utils/domUtils.js";
+import { fetchTopMovies, searchSingleMovie } from "./modules/api.js";
 import { renderTrailers } from "./modules/caroussel.js";
-import getMovieCard from "./components/movieCard.js";
-import { getEl } from "./utils/domUtils.js";
+import { pushRecMovies, pushSearchedMovies } from "./modules/gui.js";
 
 
 if(window.location.pathname === '/' || window.location.pathname === '/index.html') {
@@ -20,10 +20,16 @@ if(window.location.pathname === '/' || window.location.pathname === '/index.html
 
 }
 
-pageSetup()
+document.addEventListener('DOMContentLoaded', (event) => {
+    log("Locked and loaded")
+    pageSetup()
+})
+
+
 
 async function pageSetup() {
     log("pageSetup()")
+    pushRecMovies()
 
     //Push trailers
     let trailers = shuffle(await fetchTopMovies()) 
@@ -31,12 +37,29 @@ async function pageSetup() {
         renderTrailers(trailers[i], i + 1)
     }
 
-    //MovieCard top20
-    let allMovies = await fetchTopMovies()
-    let twentyMovies = allMovies.slice(0, 20)  
-    let sectionRef = getEl('#cardContainer')
-    for(let movie of twentyMovies) {
-        sectionRef.appendChild(getMovieCard(movie))
-    }
+    //Eventlyssnare på searchForm
+    
+
+    //Pushar ut sökresultat på skärmen
+    let searchForm = getEl('#searchForm')
+    searchForm.addEventListener('submit', function (event) {
+        event.preventDefault()
+        let input = getEl('#searchInput').value
+        pushSearchedMovies(input)
+    })
+
+    //Eventlyssnare på Card Container
+    let movieCards = getElems('.movie-card')
+    
+//Denna funkar men behöver nu ta emot ett IMDB id
+    movieCards.forEach(cardDiv => { 
+        cardDiv.addEventListener('click', () => {
+        //Vid klick på specifik film skicka in den infon i ett singleCard
+        let input = cardDiv.textContent
+        /* pushSingleMovie(movieSearch) //pusha infon in i single card */
+        searchSingleMovie(input)
+        log(cardDiv.textContent)
+    });
+});
 
 }
