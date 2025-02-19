@@ -1,5 +1,6 @@
 import log from "./utils/logger.js";
-import { fetchTopMovies, fetchTrailers } from "./modules/api.js";
+import { shuffle } from "./utils/utils.js";
+import { fetchTopMovies } from "./modules/api.js";
 import { renderTrailers } from "./modules/caroussel.js";
 import getMovieCard from "./components/movieCard.js";
 import { getEl } from "./utils/domUtils.js";
@@ -24,12 +25,12 @@ pageSetup()
 async function pageSetup() {
     log("pageSetup()")
 
-    let trailers = await fetchTrailers() //returnerar en shufflad array av fem trailers
-    //ska denna va här?
+    //Push trailers
+    let trailers = shuffle(await fetchTopMovies()) 
     for(let i = 0; i < trailers.length; i++) {
         renderTrailers(trailers[i], i + 1)
     }
-    
+
     //MovieCard top20
     let allMovies = await fetchTopMovies()
     let twentyMovies = allMovies.slice(0, 20)  

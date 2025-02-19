@@ -1,4 +1,3 @@
-import { shuffle } from '../utils/utils.js';
 import log from '../utils/logger.js';
 
 export function fetchTopMovies() {
@@ -10,14 +9,8 @@ export function fetchTopMovies() {
         })
         .catch(error => {
             log("Något gick fel: ", error.message)
+            return []
         });
-}
-
-//Ska denna va här?
-export async function fetchTrailers() {
-    let movies = await fetchTopMovies()
-    let fiveArray = shuffle(movies)
-    return fiveArray //Returnerar en shufflad array av 5 filmer
 }
 
 

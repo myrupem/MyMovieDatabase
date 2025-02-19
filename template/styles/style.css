@@ -101,9 +101,19 @@ body {
 }
 
 .movie-card {
+    display: flex;
+    flex-direction: column;
     margin: 0.5em;
     width: 220px;
     height: auto;
+}
+
+.movie-card_favBtn {
+    color: var(--text-yellow);
+    position: relative;
+    top: 7%;
+    left: 78%
+
 }
 
 .movie-card_img {
