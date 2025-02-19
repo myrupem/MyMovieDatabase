@@ -84,13 +84,20 @@ body {
     cursor: pointer;
 }
 
+.popular-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-yellow);
+    margin: 0.5rem;
+}
+
 /* Movie Cards */
 .card-container {
     width: 100%;
     display: flex;
-    flex-direction: row-reverse;
-    border: 1px solid red;
+    flex-wrap: wrap;
     justify-content: space-evenly;
+    padding-top: 1.5rem;
 }
 
 .movie-card {
@@ -109,6 +116,5 @@ body {
     width: 100%;
     text-align: center;
     font-size: large;
-    border: 1px solid red;
     padding: 0.5em;
 }

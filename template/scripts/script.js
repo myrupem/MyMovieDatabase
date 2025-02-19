@@ -1,5 +1,5 @@
 import log from "./utils/logger.js";
-import { fetchTrailers } from "./modules/api.js";
+import { fetchTopMovies, fetchTrailers } from "./modules/api.js";
 import { renderTrailers } from "./modules/caroussel.js";
 import getMovieCard from "./components/movieCard.js";
 import { getEl } from "./utils/domUtils.js";
@@ -30,9 +30,11 @@ async function pageSetup() {
         renderTrailers(trailers[i], i + 1)
     }
     
-    //MovieCard test
+    //MovieCard top20
+    let allMovies = await fetchTopMovies()
+    let twentyMovies = allMovies.slice(0, 20)  
     let sectionRef = getEl('#cardContainer')
-    for(let movie of trailers) {
+    for(let movie of twentyMovies) {
         sectionRef.appendChild(getMovieCard(movie))
     }
 
