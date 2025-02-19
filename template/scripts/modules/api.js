@@ -10,6 +10,7 @@ export function fetchTopMovies() {
         })
         .catch(error => {
             log("Något gick fel: ", error.message)
+            return []
         });
 }
 
