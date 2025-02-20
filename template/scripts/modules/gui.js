@@ -1,7 +1,7 @@
 //Här stoppar du in allt som ska visas ut på sidan!
 import { getEl } from "../utils/domUtils.js"
 import { fetchTopMovies, fetchSearch } from "./api.js"
-import getMovieCard from "../components/movieCard.js"
+import getMovieCard, { singleMovieCard } from "../components/movieCard.js"
 
 export async function pushRecMovies() {
     let allMovies = await fetchTopMovies()
@@ -12,12 +12,16 @@ export async function pushRecMovies() {
     }
 }
 
-export async function pushSearchedMovies(input) {
+export async function pushSearchedMovies() {
     //tryck ut sökresultaten på skärmen
-    let searchedMovies = await fetchSearch(input)
+    let searchedMovies = await fetchSearch()
     let sectionRef = getEl('#cardContainer')
-    sectionRef.innerHTML = ''
     for(let movie of searchedMovies) {
         sectionRef.appendChild(getMovieCard(movie))
     }
+}
+
+export async function pushSingleMovie(input) {
+    let sectionRef = getEl('#movieInformation')
+    sectionRef.innerHTML = singleMovieCard(input)
 }
