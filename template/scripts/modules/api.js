@@ -1,4 +1,5 @@
 import log from '../utils/logger.js';
+import { getLSItem } from './localStorage.js';
 
 export function fetchTopMovies() {
     return fetch('https://santosnr6.github.io/Data/favoritemovies.json')
@@ -13,7 +14,9 @@ export function fetchTopMovies() {
         });
 }
 
-export function fetchSearch(input) {
+export function fetchSearch() {
+    let input = localStorage.getItem('searchInput')
+    log(`fetchSearch() localStorage key SearchInput ${input}`)
     return fetch(`http://www.omdbapi.com/?apikey=99013a27&s=${input}*`)
     .then(response => response.json())
     .then(data => {
@@ -27,9 +30,9 @@ export function fetchSearch(input) {
 }
 
 
-//Denna funkar men behöver nu ta emot ett IMDB id
+//Denna funkar men behöver nu ta emot ett IMDB id //setup att denna körs vid lyssnare på klick
 export function searchSingleMovie(input) {
-    return fetch(`http://www.omdbapi.com/?apikey=99013a27&i=${input}*`)
+    return fetch(`http://www.omdbapi.com/?apikey=99013a27&plot=full&i=${input}`)
     .then(response => response.json())
     .then(data => {
         log(data);

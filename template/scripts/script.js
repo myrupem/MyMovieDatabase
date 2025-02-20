@@ -3,29 +3,31 @@ import { shuffle } from "./utils/utils.js";
 import { getEl, getElems } from "./utils/domUtils.js";
 import { fetchTopMovies, searchSingleMovie } from "./modules/api.js";
 import { renderTrailers } from "./modules/caroussel.js";
-import { pushRecMovies, pushSearchedMovies } from "./modules/gui.js";
+import { pushRecMovies, pushSearchedMovies, pushSingleMovie } from "./modules/gui.js";
+import { getLSItem } from "./modules/localStorage.js"
 
 
-if(window.location.pathname === '/' || window.location.pathname === '/index.html') {
-    console.log('index.html');
 
-} else if(window.location.pathname === '/favorites.html') {
-    console.log('favorites.html');
+    if(window.location.pathname === '/' || window.location.pathname === '/template/index.html') {
+        document.addEventListener('DOMContentLoaded', (event) => {
+            log("Locked and loaded")
+            pageSetup()
+        })
 
-} else if(window.location.pathname === '/movie.html') {
-    console.log('movie.html');
+    } else if(window.location.pathname === '/template/favorites.html') {
+        window.location.href = 'favorites.html';
 
-} else if(window.location.pathname === '/search.html') {
-    console.log('search.html');
+    } else if(window.location.pathname === '/template/movie.html') {
+        singleMovieSetup()
 
-}
+    } else if(window.location.pathname === '/template/search.html') {
+        document.addEventListener('DOMContentLoaded', (event) => {
+            pushSearchedMovies() 
+        })
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    log("Locked and loaded")
-    pageSetup()
-})
+    }
 
-
+log(window.location.pathname)
 
 async function pageSetup() {
     log("pageSetup()")
@@ -38,28 +40,24 @@ async function pageSetup() {
     }
 
     //Eventlyssnare på searchForm
-    
-
-    //Pushar ut sökresultat på skärmen
+    //Sparar sökInput i local storage & eventlyssnare på knapp
     let searchForm = getEl('#searchForm')
     searchForm.addEventListener('submit', function (event) {
         event.preventDefault()
         let input = getEl('#searchInput').value
-        pushSearchedMovies(input)
+        //Detta value ska sparas i localStorage
+        localStorage.setItem('searchInput', input)
+        log(`localstorage searchInput: ${input}`)
+        window.location.href = './search.html';
     })
+}
 
-    //Eventlyssnare på Card Container
-    let movieCards = getElems('.movie-card')
-    
-//Denna funkar men behöver nu ta emot ett IMDB id
-    movieCards.forEach(cardDiv => { 
-        cardDiv.addEventListener('click', () => {
-        //Vid klick på specifik film skicka in den infon i ett singleCard
-        let input = cardDiv.textContent
-        /* pushSingleMovie(movieSearch) //pusha infon in i single card */
-        searchSingleMovie(input)
-        log(cardDiv.textContent)
-    });
-});
-
+async function singleMovieSetup() {
+    //Hämta idt från local storage
+    let input = localStorage.getItem('movieId')
+    //Tryck in idt i en function som gör en fetch på singleMovie
+    let singleMovie = await searchSingleMovie(input)
+    log(singleMovie)
+    //Hämta funktion som trycker ut single movie på skärmen
+    pushSingleMovie(singleMovie)
 }
