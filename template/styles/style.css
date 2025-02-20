@@ -128,3 +128,50 @@ body {
     font-size: large;
     padding: 0.5em;
 }
+
+/* Single Movie Card */
+.movie-information {
+    display: flex;
+    max-width: 1180px;
+    height: auto;
+}
+
+.single-movie-card_img {
+    width: 500px;
+    height: auto;
+}
+
+.single-movie-card_title {
+    color: var(--text-yellow);
+    font-size: xx-large;
+    margin: 15rem 1rem 3rem 1.5rem;
+}
+
+.single-movie-card_fav-cont {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom:3rem;
+}
+
+.single-movie-card_favBtn {
+    color: var(--text-yellow);
+    margin: 1rem;
+}
+
+.single-movie-card_fav-text {
+    color: var(--text-yellow);
+    font-size: x-large;
+    margin-top: 0.3rem;
+}
+
+.single-movie-card_info {
+    color: var(--text-yellow);
+    margin: 1rem;
+    margin-left: 1.5rem;
+}
+
+.single-movie-card_plot {
+    color: var(--primary-white);
+    font-size: 16px;
+    margin: 3rem 1rem 1rem 1.5rem;
+}

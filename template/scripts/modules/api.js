@@ -30,9 +30,9 @@ export function fetchSearch() {
 }
 
 
-//Denna funkar men behöver nu ta emot ett IMDB id
+//Denna funkar men behöver nu ta emot ett IMDB id //setup att denna körs vid lyssnare på klick
 export function searchSingleMovie(input) {
-    return fetch(`http://www.omdbapi.com/?apikey=99013a27&i=${input}*`)
+    return fetch(`http://www.omdbapi.com/?apikey=99013a27&plot=full&i=${input}`)
     .then(response => response.json())
     .then(data => {
         log(data);

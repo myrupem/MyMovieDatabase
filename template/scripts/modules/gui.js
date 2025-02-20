@@ -21,7 +21,7 @@ export async function pushSearchedMovies() {
     }
 }
 
-export async function pushSingleMovie(input) {
+export async function pushSingleMovie(singleMovie) {
     let sectionRef = getEl('#movieInformation')
-    sectionRef.innerHTML = singleMovieCard(input)
+    sectionRef.innerHTML = singleMovieCard(singleMovie)
 }

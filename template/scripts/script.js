@@ -15,7 +15,7 @@ import { getLSItem } from "./modules/localStorage.js"
         })
 
     } else if(window.location.pathname === '/template/favorites.html') {
-        window.location.href='favorites.html';
+        window.location.href = 'favorites.html';
 
     } else if(window.location.pathname === '/template/movie.html') {
         singleMovieSetup()
@@ -54,9 +54,10 @@ async function pageSetup() {
 
 async function singleMovieSetup() {
     //Hämta idt från local storage
-    let input = getLSItem()
+    let input = localStorage.getItem('movieId')
     //Tryck in idt i en function som gör en fetch på singleMovie
     let singleMovie = await searchSingleMovie(input)
+    log(singleMovie)
     //Hämta funktion som trycker ut single movie på skärmen
     pushSingleMovie(singleMovie)
 }
