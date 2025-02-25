@@ -113,7 +113,6 @@ body {
     position: relative;
     top: 7%;
     left: 78%
-
 }
 
 .movie-card_img {
@@ -156,6 +155,7 @@ body {
 .single-movie-card_favBtn {
     color: var(--text-yellow);
     margin: 1rem;
+    z-index: 999;
 }
 
 .single-movie-card_fav-text {

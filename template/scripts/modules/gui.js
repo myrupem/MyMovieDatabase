@@ -18,10 +18,12 @@ export async function pushSearchedMovies() {
     let sectionRef = getEl('#cardContainer')
     for(let movie of searchedMovies) {
         sectionRef.appendChild(getMovieCard(movie))
+        //ska jag spara movie i local storage här?
     }
 }
 
 export async function pushSingleMovie(singleMovie) {
     let sectionRef = getEl('#movieInformation')
     sectionRef.innerHTML = singleMovieCard(singleMovie)
+    //ska jag spara movie i local storage här?
 }

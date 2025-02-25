@@ -1,27 +1,20 @@
 import { addClass, createEl, getEl } from "../utils/domUtils.js";
+import { isFavorite } from "../modules/localStorage.js";
 
 export default function getMovieCard(movie) {
-    const movieCard = createEl('a')
+    const movieCard = createEl('div')
+    movieCard.dataset.id = movie.imdbID
     movieCard.href = "./movie.html"
     addClass(movieCard, 'movie-card')
+
     movieCard.innerHTML = `
-        <span class="movie-card_favBtn fa-regular fa-star fa-2xl"></span>
+        <span class="movie-card_favBtn fa-star ${isFavorite(movie.imdbID)} fa-2xl"></span>
         <img class="movie-card_img" src="${movie.Poster}" alt="${movie.Title}">
         <p class="movie-card_title">${movie.Title}</p>
     `
-    movieCard.addEventListener('click', () => {
-        localStorage.setItem('movieId', movie.imdbID)
-        console.log(movieId.imdbID)
-    })
-
     return movieCard
 }
 
-function isFav(id) {
-    //Om fav innehåller id, returnera fa-solid, annars fa-reg
-    //${isFav(movie.imdbID)}  i koden
-
-}
 
 export function singleMovieCard(singleMovie) {
     let movieInfo = getEl('#movieInformation')
