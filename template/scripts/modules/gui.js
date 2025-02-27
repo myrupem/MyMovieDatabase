@@ -1,7 +1,8 @@
 //Här stoppar du in allt som ska visas ut på sidan!
 import { getEl } from "../utils/domUtils.js"
-import { fetchTopMovies, fetchSearch } from "./api.js"
+import { fetchTopMovies, fetchSearch, searchSingleMovie } from "./api.js"
 import getMovieCard, { singleMovieCard } from "../components/movieCard.js"
+import { getFavorites } from "./localStorage.js"
 
 export async function pushRecMovies() {
     let allMovies = await fetchTopMovies()
@@ -18,12 +19,25 @@ export async function pushSearchedMovies() {
     let sectionRef = getEl('#cardContainer')
     for(let movie of searchedMovies) {
         sectionRef.appendChild(getMovieCard(movie))
-        //ska jag spara movie i local storage här?
     }
 }
 
-export async function pushSingleMovie(singleMovie) {
+export async function pushSingleMovie() {
+    //Hämta idt från local storage
+    let input = localStorage.getItem('movieid')
+    //Tryck in idt i en function som gör en fetch på singleMovie
+    let singleMovie = await searchSingleMovie(input)
+    //Hämta funktion som trycker ut single movie på skärmen
     let sectionRef = getEl('#movieInformation')
     sectionRef.innerHTML = singleMovieCard(singleMovie)
-    //ska jag spara movie i local storage här?
+}
+
+export async function pushFavoritesMovies() {
+    //tryck ut favoriterna på skärmen
+    let favoriteIDs = getFavorites()
+    let sectionRef = getEl('#cardContainer')
+    for(let imdb of favoriteIDs) {
+        let movie = await searchSingleMovie(imdb)
+        sectionRef.appendChild(getMovieCard(movie))
+    }
 }

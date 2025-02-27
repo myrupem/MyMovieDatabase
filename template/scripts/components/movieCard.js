@@ -1,5 +1,4 @@
 import { addClass, createEl, getEl } from "../utils/domUtils.js";
-import { isFavorite } from "../modules/localStorage.js";
 
 export default function getMovieCard(movie) {
     const movieCard = createEl('div')
@@ -8,8 +7,8 @@ export default function getMovieCard(movie) {
     addClass(movieCard, 'movie-card')
 
     movieCard.innerHTML = `
-        <span class="movie-card_favBtn fa-star ${isFavorite(movie.imdbID)} fa-2xl"></span>
-        <img class="movie-card_img" src="${movie.Poster}" alt="${movie.Title}">
+        <span class="star movie-card_favBtn fa-star fa-regular fa-2xl"></span>
+        <img class="movie-card_img" src="${moviePoster(movie)}" alt="${movie.Title}">
         <p class="movie-card_title">${movie.Title}</p>
     `
     return movieCard
@@ -17,14 +16,16 @@ export default function getMovieCard(movie) {
 
 
 export function singleMovieCard(singleMovie) {
-    let movieInfo = getEl('#movieInformation')
-    return movieInfo.innerHTML = `
+    let movieCard = getEl('#movieInformation')
+    console.log(movieCard)
+    movieCard.dataset.id = singleMovie.imdbID
+    return movieCard.innerHTML = `
         <div class="single-movie-card_img-cont">
-            <img class="single-movie-card_img" src="${singleMovie.Poster}" alt="${singleMovie.Title}">
+            <img class="single-movie-card_img" src="${moviePoster(singleMovie)}" alt="${singleMovie.Title}">
         </div>
         <div class="single-movie-card_info-cont">
             <div class="single-movie-card_fav-cont">
-                <span class="single-movie-card_favBtn fa-regular fa-star fa-2xl"></span>
+                <span class="star single-movie-card_favBtn fa-regular fa-star fa-2xl"></span>
                 <p class="single-movie-card_fav-text">Add to your favorites</p>
             </div>
                 <p class="single-movie-card_title">${singleMovie.Title}</p>
@@ -34,4 +35,10 @@ export function singleMovieCard(singleMovie) {
                 <p class="single-movie-card_plot">${singleMovie.Plot}</p>
         </div>
         ` 
+}
+
+function moviePoster(movie) {
+    return (!movie.Poster || movie.Poster === 'N/A')
+    ? "res/icons/missing-poster.svg"
+    : movie.Poster
 }

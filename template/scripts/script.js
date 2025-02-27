@@ -3,8 +3,8 @@ import { shuffle } from "./utils/utils.js";
 import { getEl, getElems } from "./utils/domUtils.js";
 import { fetchTopMovies, searchSingleMovie } from "./modules/api.js";
 import { renderTrailers } from "./modules/caroussel.js";
-import { pushRecMovies, pushSearchedMovies, pushSingleMovie } from "./modules/gui.js";
-import { movieCardListener } from "./modules/eventHandlers.js";
+import { pushRecMovies, pushSearchedMovies, pushSingleMovie, pushFavoritesMovies } from "./modules/gui.js";
+import { movieCardListener, initiateStars } from "./modules/eventHandlers.js";
 import { getFavorites } from "./modules/localStorage.js";
 
 
@@ -13,28 +13,35 @@ import { getFavorites } from "./modules/localStorage.js";
         document.addEventListener('DOMContentLoaded', async(event) => {
             await pageSetup()
             movieCardListener()
-            setfavBtnClass() //denna kansek ska bort
+            initiateStars()
         })
 
     } else if(window.location.pathname === '/template/favorites.html') {
-       
+        document.addEventListener('DOMContentLoaded', async (event) => { 
+            await pushFavoritesMovies()
+            movieCardListener()
+            initiateStars()
+        })
 
     } else if(window.location.pathname === '/template/movie.html') {
-        singleMovieSetup()
-        //movieCardListener(movie)
-        console.log(localStorage.getItem('movieid'))
+        document.addEventListener('DOMContentLoaded', async(event) => {
+            await pushSingleMovie()
+            movieCardListener()
+            initiateStars()
+            console.log(localStorage.getItem('movieid'))
+        })
+        
 
     } else if(window.location.pathname === '/template/search.html') {
-        document.addEventListener('DOMContentLoaded', (event) => {
-            pushSearchedMovies() 
+        document.addEventListener('DOMContentLoaded', async(event) => {
+            await pushSearchedMovies() 
+            movieCardListener()
+            initiateStars()
         })
 
     }
 
-log(window.location.pathname)
-
 async function pageSetup() {
-    log("pageSetup()")
     pushRecMovies()
 
     //Push trailers
@@ -54,27 +61,4 @@ async function pageSetup() {
         log(`localstorage searchInput: ${input}`)
         window.location.href = './search.html';
     })
-
-    //test get fav local storage
-    log(getFavorites())
- 
-}
-
-async function singleMovieSetup() {
-    //Hämta idt från local storage
-    let input = localStorage.getItem('movieId')
-    //Tryck in idt i en function som gör en fetch på singleMovie
-    let singleMovie = await searchSingleMovie(input)
-    //Hämta funktion som trycker ut single movie på skärmen
-    pushSingleMovie(singleMovie)
-}
-
-//detta kanske ska bort
-function setfavBtnClass() {
-    let favBtn = getElems('movie-card_favBtn')
-    for(starBtn of favBtn) {
-        if(!starBtn.classList.contains('fa-regular') && !starBtn.classList.contains('fa-solid')) {
-            addClass(starBtn, 'fa-regular')
-        }
-    }
 }

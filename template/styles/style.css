@@ -84,11 +84,15 @@ body {
     cursor: pointer;
 }
 
-.popular-title {
+.popular-title, .favorites-title, .search-title {
     text-align: center;
     font-size: 1.5rem;
     color: var(--text-yellow);
     margin: 0.5rem;
+}
+
+.favorites-title, .search-title {
+    margin-top: 3rem;
 }
 
 /* Movie Cards */
@@ -111,7 +115,9 @@ body {
 .movie-card_favBtn {
     color: var(--text-yellow);
     position: relative;
-    top: 7%;
+    width: 36px;
+    height: 20px;
+    top: 13%;
     left: 78%
 }
 
@@ -133,6 +139,8 @@ body {
     display: flex;
     max-width: 1180px;
     height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .single-movie-card_img {
@@ -174,4 +182,5 @@ body {
     color: var(--primary-white);
     font-size: 16px;
     margin: 3rem 1rem 1rem 1.5rem;
+    width: 38rem;
 }
