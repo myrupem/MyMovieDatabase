@@ -21,6 +21,7 @@
 body {
     background-color: var(--primary-bg);
     max-width: 100%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* Utils */
@@ -81,4 +82,105 @@ body {
     background: none;
     border: none;
     cursor: pointer;
+}
+
+.popular-title, .favorites-title, .search-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-yellow);
+    margin: 0.5rem;
+}
+
+.favorites-title, .search-title {
+    margin-top: 3rem;
+}
+
+/* Movie Cards */
+.card-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 1.5rem;
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+    width: 220px;
+    height: auto;
+}
+
+.movie-card_favBtn {
+    color: var(--text-yellow);
+    position: relative;
+    width: 36px;
+    height: 20px;
+    top: 13%;
+    left: 78%
+}
+
+.movie-card_img {
+    width: 220px;
+    height: auto;
+}
+
+.movie-card_title {
+    color: var(--text-yellow);
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    padding: 0.5em;
+}
+
+/* Single Movie Card */
+.movie-information {
+    display: flex;
+    max-width: 1180px;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.single-movie-card_img {
+    width: 500px;
+    height: auto;
+}
+
+.single-movie-card_title {
+    color: var(--text-yellow);
+    font-size: xx-large;
+    margin: 15rem 1rem 3rem 1.5rem;
+}
+
+.single-movie-card_fav-cont {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom:3rem;
+}
+
+.single-movie-card_favBtn {
+    color: var(--text-yellow);
+    margin: 1rem;
+    z-index: 999;
+}
+
+.single-movie-card_fav-text {
+    color: var(--text-yellow);
+    font-size: x-large;
+    margin-top: 0.3rem;
+}
+
+.single-movie-card_info {
+    color: var(--text-yellow);
+    margin: 1rem;
+    margin-left: 1.5rem;
+}
+
+.single-movie-card_plot {
+    color: var(--primary-white);
+    font-size: 16px;
+    margin: 3rem 1rem 1rem 1.5rem;
+    width: 38rem;
 }
