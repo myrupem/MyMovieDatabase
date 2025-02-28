@@ -14,4 +14,8 @@ function addClass(element, className) {
     element.classList.add(className)
 }
 
-export { getEl, getElems, createEl, addClass }
+function removeClass(element, className) {
+    element.classList.remove(className)
+}
+
+export { getEl, getElems, createEl, addClass, removeClass }

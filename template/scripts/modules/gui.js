@@ -1,7 +1,7 @@
-//Här stoppar du in allt som ska visas ut på sidan!
 import { getEl } from "../utils/domUtils.js"
-import { fetchTopMovies, fetchSearch } from "./api.js"
+import { fetchTopMovies, fetchSearch, searchSingleMovie } from "./api.js"
 import getMovieCard, { singleMovieCard } from "../components/movieCard.js"
+import { getFavorites } from "./localStorage.js"
 
 export async function pushRecMovies() {
     let allMovies = await fetchTopMovies()
@@ -13,7 +13,6 @@ export async function pushRecMovies() {
 }
 
 export async function pushSearchedMovies() {
-    //tryck ut sökresultaten på skärmen
     let searchedMovies = await fetchSearch()
     let sectionRef = getEl('#cardContainer')
     for(let movie of searchedMovies) {
@@ -21,7 +20,18 @@ export async function pushSearchedMovies() {
     }
 }
 
-export async function pushSingleMovie(singleMovie) {
+export async function pushSingleMovie() {
+    let input = localStorage.getItem('movieid')
+    let singleMovie = await searchSingleMovie(input)
     let sectionRef = getEl('#movieInformation')
     sectionRef.innerHTML = singleMovieCard(singleMovie)
+}
+
+export async function pushFavoritesMovies() {
+    let favoriteIDs = getFavorites()
+    let sectionRef = getEl('#cardContainer')
+    for(let imdb of favoriteIDs) {
+        let movie = await searchSingleMovie(imdb)
+        sectionRef.appendChild(getMovieCard(movie))
+    }
 }

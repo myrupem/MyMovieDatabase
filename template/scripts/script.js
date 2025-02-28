@@ -1,36 +1,43 @@
-import log from "./utils/logger.js";
 import { shuffle } from "./utils/utils.js";
-import { getEl, getElems } from "./utils/domUtils.js";
-import { fetchTopMovies, searchSingleMovie } from "./modules/api.js";
+import { getEl } from "./utils/domUtils.js";
+import { fetchTopMovies } from "./modules/api.js";
 import { renderTrailers } from "./modules/caroussel.js";
-import { pushRecMovies, pushSearchedMovies, pushSingleMovie } from "./modules/gui.js";
-import { getLSItem } from "./modules/localStorage.js"
-
+import { pushRecMovies, pushSearchedMovies, pushSingleMovie, pushFavoritesMovies } from "./modules/gui.js";
+import { movieCardListener, initiateStars } from "./modules/eventHandlers.js";
 
 
     if(window.location.pathname === '/' || window.location.pathname === '/template/index.html') {
-        document.addEventListener('DOMContentLoaded', (event) => {
-            log("Locked and loaded")
-            pageSetup()
+        document.addEventListener('DOMContentLoaded', async(event) => {
+            await pageSetup()
+            movieCardListener()
+            initiateStars()
         })
 
     } else if(window.location.pathname === '/template/favorites.html') {
-        window.location.href = 'favorites.html';
+        document.addEventListener('DOMContentLoaded', async (event) => { 
+            await pushFavoritesMovies()
+            movieCardListener()
+            initiateStars()
+        })
 
     } else if(window.location.pathname === '/template/movie.html') {
-        singleMovieSetup()
+        document.addEventListener('DOMContentLoaded', async(event) => {
+            await pushSingleMovie()
+            movieCardListener()
+            initiateStars()
+        })
+        
 
     } else if(window.location.pathname === '/template/search.html') {
-        document.addEventListener('DOMContentLoaded', (event) => {
-            pushSearchedMovies() 
+        document.addEventListener('DOMContentLoaded', async(event) => {
+            await pushSearchedMovies() 
+            movieCardListener()
+            initiateStars()
         })
 
     }
 
-log(window.location.pathname)
-
 async function pageSetup() {
-    log("pageSetup()")
     pushRecMovies()
 
     //Push trailers
@@ -39,25 +46,11 @@ async function pageSetup() {
         renderTrailers(trailers[i], i + 1)
     }
 
-    //Eventlyssnare på searchForm
-    //Sparar sökInput i local storage & eventlyssnare på knapp
     let searchForm = getEl('#searchForm')
     searchForm.addEventListener('submit', function (event) {
         event.preventDefault()
         let input = getEl('#searchInput').value
-        //Detta value ska sparas i localStorage
         localStorage.setItem('searchInput', input)
-        log(`localstorage searchInput: ${input}`)
         window.location.href = './search.html';
     })
-}
-
-async function singleMovieSetup() {
-    //Hämta idt från local storage
-    let input = localStorage.getItem('movieId')
-    //Tryck in idt i en function som gör en fetch på singleMovie
-    let singleMovie = await searchSingleMovie(input)
-    log(singleMovie)
-    //Hämta funktion som trycker ut single movie på skärmen
-    pushSingleMovie(singleMovie)
 }
