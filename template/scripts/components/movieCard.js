@@ -17,7 +17,6 @@ export default function getMovieCard(movie) {
 
 export function singleMovieCard(singleMovie) {
     let movieCard = getEl('#movieInformation')
-    console.log(movieCard)
     movieCard.dataset.id = singleMovie.imdbID
     return movieCard.innerHTML = `
         <div class="single-movie-card_img-cont">
